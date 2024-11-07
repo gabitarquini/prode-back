@@ -89,6 +89,12 @@ jobs:
           name: jacoco-report
           path: build/jacocoHtml/
 
+      - name: Adding coverage badge
+        uses: demyanets/angular-coverage-badges-action@v1
+        with:
+          coverage-summary-path: ./coverage/coverage-summary.json
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
 #      # Opcional: Podríamos subir nuestro reporte a un servicio como codecov.
 #      - name: Send JaCoCo reports to CodeCov
 #        run: |
