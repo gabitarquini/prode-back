@@ -89,9 +89,9 @@ jobs:
           name: jacoco-report
           path: build/jacocoHtml/
 
-      # Opcional: Podríamos subir nuestro reporte a un servicio como codecov.
-      - name: Send JaCoCo reports to CodeCov
-        run: |
-          curl -Os https://uploader.codecov.io/latest/linux/codecov
-          chmod +x codecov
-          ./codecov -t ${{ CODECOV_TOKEN }}
+#      # Opcional: Podríamos subir nuestro reporte a un servicio como codecov.
+#      - name: Send JaCoCo reports to CodeCov
+#        run: |
+#          curl -Os https://uploader.codecov.io/latest/linux/codecov
+#          chmod +x codecov
+#          ./codecov -t ${{ CODECOV_TOKEN }}
