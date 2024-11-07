@@ -38,9 +38,12 @@ jobs:
           chmod +x ./gradlew
 
       # Para buildear, testear y correr jacoco tenemos una meta de gradle, runOnGithub, agregada a nuestro proyecto.
+      # Configurar Gradle sin usar `arguments`.
       - uses: gradle/actions/setup-gradle@v3
-        with:
-          arguments: runOnGitHub
+
+      # Ejecutar Gradle en un paso separado.
+      - name: Run Gradle
+        run: ./gradlew runOnGitHub
 
       # runOnGitHub, mediante jacoco, genera reportes de cobertura en distintos formatos (html, csv, lcov, entre otros).
       # Con el reporte en formato csv generamos una imagen svg que publica el % de cÃ³digo cubierto por los tests.
