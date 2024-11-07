@@ -3,10 +3,12 @@ package dominio.prode
 //Los partidos reales no son capitan hace falta dividir? idem con el batacazo
 class Partido (val id : Int, val esCapitan : Boolean = false) {
     lateinit var resultado : Resultado
-    lateinit var goles : MutableList<Int>
+    var goles = mutableListOf(0,0)
 
     fun setearResultado(golLocal : Int, golVisita : Int) {
-        goles.add(golLocal, golVisita)
+        goles.clear()
+        goles.add(golLocal)
+        goles.add(golVisita)
         resultado = evaluarResultado(golLocal, golVisita)
     }
 
