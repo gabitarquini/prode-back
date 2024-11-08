@@ -17,8 +17,9 @@ class Usuario (
         prodes.sumOf { it.puntos }
 
 
-    fun armarProde(idPartido : Int, golLocal : Int, golVisita : Int) {
-        prode.partidos.find { it.id == idPartido }?.setearResultado(golLocal, golVisita)
+    fun armarProde(idPartido : Int, golLocal : Int, golVisita : Int, capitan : Boolean) {
+        //VALIDAR QUE HAYA UN SOLO CAPITAN
+        prode.partidos.find { it.id == idPartido }?.setearResultado(golLocal, golVisita, capitan)
     }
 
     fun cierreDeFecha (plantillaProde : Prode) {

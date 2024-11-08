@@ -1,17 +1,17 @@
 package dominio.prode
 
-class Prode () {
+class Prode (val partidos : MutableList<Partido>) {
     var puntos : Int = 0
-    val partidos = mutableListOf<Partido>()
 
     fun chequearPuntos(resultadosVerdaderos : MutableList<Partido>){
+        puntos = 0
         resultadosVerdaderos.forEach { partidoReal -> evaluar(
             partidos.find{ it.id == partidoReal.id}!!,
-            partidoReal)}
+            partidoReal)
+        }
     }
 
     fun evaluar (partidoReal : Partido, partidoPronosticado : Partido) {
-        puntos = 0
         val puntosPartido = (0 + evaluarPorResultado(partidoReal, partidoPronosticado) + evaluarPorGoles(partidoReal, partidoPronosticado)) * bonificacionCapitan(partidoPronosticado)
         puntos += puntosPartido
     }
@@ -24,6 +24,8 @@ class Prode () {
 
     fun bonificacionCapitan(partidoPronosticado : Partido) =
         if (partidoPronosticado.esCapitan) 2 else 1
+
+    fun estaCompleto () = partidos.all { it.estaCargado }
 
 }
 
@@ -42,6 +44,9 @@ enum class Resultado{
 
 class Torneo (val resultadosVerdaderos : MutableList<Partido>) { //Los resultados verdaderos los obtiene de la API
     val usuarios = mutableListOf<Usuario>()
+
+    fun agregarParticipante (usuario: Usuario) =
+        usuarios.add(usuario)
 
     fun parcialesFecha () {
         usuarios.forEach { usuario ->
