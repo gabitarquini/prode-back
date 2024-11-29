@@ -7,7 +7,7 @@ import io.kotest.matchers.shouldBe
 class PartidoSpec : DescribeSpec({
     isolationMode = IsolationMode.InstancePerTest
 
-    describe("Un partido..") {
+    describe("Dado un partido...") {
             //arrange
             val partido = Partido(1, equipoLocal = equipos[0], equipoVisita = equipos[1])
         it("seteado en 1-0 devuelve como resultado LOCAL") {
